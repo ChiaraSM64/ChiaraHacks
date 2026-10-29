@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lobby</title>
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <main>
+            <div class="game-list" id="gameList"></div>
+        </main>
+
+        <script>
+            // Note maximale possible
+            const MAX_RATING = 10;
+
+            async function loadJson(path) {
+                const response = await fetch(path);
+                if (!response.ok) throw new Error(`Impossible de charger ${path}`);
+                return response.json();
+            }
+
+            async function init() {
+                const list = document.getElementById("gameList");
+
+                try {
+                    const [games, ratings] = await Promise.all([
+                        loadJson("DB/games.json"),
+                        loadJson("DB/ratings.json"),
+                    ]);
+
+                    // Regroupe les notes par idGame
+                    const ratingsByGame = {};
+                    for (const r of ratings) {
+                        (ratingsByGame[r.idGame] ??= []).push(r.value);
+                    }
+
+                    // Calcule la moyenne de chaque jeu (null si aucune note)
+                    const gamesWithRating = games.map((game) => {
+                        const values = ratingsByGame[game.idGame] ?? [];
+                        const average = values.length
+                            ? values.reduce((a, b) => a + b, 0) / values.length
+                            : null;
+                        return { ...game, averageRating: average };
+                    });
+
+                    // Tri par défaut : note la plus haute -> la plus basse
+                    gamesWithRating.sort(
+                        (a, b) => (b.averageRating ?? -1) - (a.averageRating ?? -1)
+                    );
+
+                    // Affichage
+                    for (const game of gamesWithRating) {
+                        const link = document.createElement("a");
+                        link.href = `gameInfos.html?id=${game.idGame}`;
+                        link.className = "game";
+
+                        const title = document.createElement("div");
+                        title.className = "gameTitle";
+                        title.textContent = game.name;
+
+                        const rating = document.createElement("div");
+                        rating.className = "gameRating";
+                        rating.textContent = game.averageRating !== null
+                            ? `${game.averageRating.toFixed(2)}/${MAX_RATING}`
+                            : "No ratings";
+
+                        link.append(title, rating);
+                        list.append(link);
+                    }
+                } catch (error) {
+                    list.textContent = "Erreur de chargement des jeux.";
+                    console.error(error);
+                }
+            }
+
+            init();
+        </script>
+    </body>
+</html>
