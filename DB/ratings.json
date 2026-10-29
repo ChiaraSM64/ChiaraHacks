@@ -1,0 +1,5 @@
+[
+  { "idRating": 1, "value": 5, "idRunner": 1, "idGame": 1 },
+  { "idRating": 2, "value": 4, "idRunner": 2, "idGame": 1 },
+  { "idRating": 3, "value": 3, "idRunner": 3, "idGame": 1 }
+]

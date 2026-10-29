@@ -1,0 +1,18 @@
+[
+  {
+    "idRuns": 1,
+    "category": "Any%",
+    "time": "00:12:34.560",
+    "completionDate": "2026-09-14",
+    "idRunner": 1,
+    "idGame": 1
+  },
+  {
+    "idRuns": 2,
+    "category": "100%",
+    "time": "01:23:45.000",
+    "completionDate": "2026-10-02",
+    "idRunner": 2,
+    "idGame": 1
+  }
+]

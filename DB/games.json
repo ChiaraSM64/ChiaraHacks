@@ -1,0 +1,9 @@
+[
+  {
+    "idGame": 1,
+    "name": "Celeste",
+    "releaseDate": "2018-01-25",
+    "logo": "logos/celeste.png",
+    "downloadLink": "https://example.com/download/celeste"
+  }
+]
