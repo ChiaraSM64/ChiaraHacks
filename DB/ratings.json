@@ -208,5 +208,19 @@
     "comment": "",
     "idRunner": 7,
     "idGame": 1
+  },
+  {
+    "idRating": 33,
+    "value": 7,
+    "comment": "",
+    "idRunner": 8,
+    "idGame": 10
+  },
+  {
+    "idRating": 34,
+    "value": 8,
+    "comment": "",
+    "idRunner": 8,
+    "idGame": 5
   }
 ]
