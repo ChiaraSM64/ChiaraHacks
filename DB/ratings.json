@@ -1,11 +1,5 @@
 [
   {
-    "idRating": 1,
-    "value": 9,
-    "idRunner": 1,
-    "idGame": 1
-  },
-  {
     "idRating": 2,
     "value": 10,
     "idRunner": 2,
