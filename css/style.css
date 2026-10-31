@@ -581,15 +581,42 @@ td {
     background-size: 200%;
     color: transparent;
     font-size: 1.1rem;
+    text-align: left;
 }
 
-.playerColor.awbryy {
-    background: linear-gradient(to right, rgb(71, 188, 238),rgb(244, 251, 254), rgb(71, 188, 238));
+.playerColor.aryll {
+    font-weight: bolder;
+    background-clip: text;
+    background-size: 200%;
+    color: #FFB3F3;
+    font-size: 1.1rem;
+}
+
+.playerColor.miphasidon {
+    background: linear-gradient(to right, #FF7F50, #ff0000, #FF7F50);
     animation: gradientAnimation 3s linear infinite;
     font-weight: bolder;
     background-clip: text;
     background-size: 200%;
     color: transparent;
+    font-size: 1.1rem;
+}
+
+.playerColor.shinyyyrelaxo {
+    background: linear-gradient(to right, #A010A0, #44BBEE, #A010A0);
+    animation: gradientAnimation 3s linear infinite;
+    font-weight: bolder;
+    background-clip: text;
+    background-size: 200%;
+    color: transparent;
+    font-size: 1.1rem;
+}
+
+.playerColor.xkiruru_ {
+    font-weight: bolder;
+    background-clip: text;
+    background-size: 200%;
+    color: #ff0000;
     font-size: 1.1rem;
 }
 
@@ -598,48 +625,6 @@ td {
     background-clip: text;
     background-size: 200%;
     color: white;
-    font-size: 1.1rem;
-}
-
-.playerColor.mercury {
-    background: linear-gradient(to right, #44BBEE,#6666EE, #44BBEE);
-    animation: gradientAnimation 3s linear infinite;
-    font-weight: bolder;
-    background-clip: text;
-    background-size: 200%;
-    color: transparent;
-    font-size: 1.1rem;
-}
-
-.playerColor.major1 {
-    font-weight: bolder;
-    background-clip: text;
-    background-size: 200%;
-    color: #43464b;
-    font-size: 1.1rem;
-}
-
-.playerColor.major2 {
-    font-weight: bolder;
-    background-clip: text;
-    background-size: 200%;
-    color: #76fda8;
-    font-size: 1.1rem;
-}
-
-.playerColor.chillo1 {
-    font-weight: bolder;
-    background-clip: text;
-    background-size: 200%;
-    color: #FF0000;
-    font-size: 1.1rem;
-}
-
-.playerColor.chillo2 {
-    font-weight: bolder;
-    background-clip: text;
-    background-size: 200%;
-    color: #0000FF;
     font-size: 1.1rem;
 }
 
