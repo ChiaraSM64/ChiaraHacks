@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Game</title>
         <link rel="stylesheet" href="../css/style.css">
-        <link rel="icon" type="image/x-icon" href="../images/websiteLogo.png">
     </head>
     <body>
         <main>
@@ -22,6 +21,15 @@
                 ratings: "../DB/ratings.json",
                 runs: "../DB/runs.json",
                 runners: "../DB/runners.json",
+            };
+
+            // Usernames (lowercase) that get a special style from style.css
+            // e.g. "chiara" -> class "playerColor chiara"
+            const PLAYER_CLASSES = {
+                chiarasm64: "chiara",
+                aryll: "aryll",
+                miphasidon: "miphasidon",
+                shinyyyrelaxo: "shinyyyrelaxo",
             };
 
             async function loadJson(path) {
@@ -82,6 +90,16 @@
                 if (className) element.className = className;
                 if (text !== undefined) element.textContent = text;
                 return element;
+            }
+
+            // Username element: adds the special style if the player has one
+            // (extraClass keeps the class of the place where it is displayed)
+            function usernameEl(name, extraClass = "") {
+                const special = PLAYER_CLASSES[name.trim().toLowerCase()];
+                const classes = [extraClass, special ? `playerColor ${special}` : ""]
+                    .filter(Boolean)
+                    .join(" ");
+                return el("span", classes, name);
             }
 
             // Only allows http(s) links
@@ -145,7 +163,7 @@
                     const body = el("div", "commentBody");
                     const head = el("div", "commentHead");
                     head.append(
-                        el("span", "commentAuthor", author),
+                        usernameEl(author, "commentAuthor"),
                         el("span", "commentRating", `${rating.value}/${MAX_RATING}`)
                     );
                     body.append(head);
@@ -194,9 +212,13 @@
                     const tbody = el("tbody");
                     runs.forEach((run, index) => {
                         const tr = el("tr");
+
+                        const runnerCell = el("td");
+                        runnerCell.append(usernameEl(runnersById[run.idRunner]?.username ?? "Unknown"));
+
                         tr.append(
                             el("td", null, String(index + 1)),
-                            el("td", null, runnersById[run.idRunner]?.username ?? "Unknown"),
+                            runnerCell,
                             el("td", null, formatTime(run.time)),
                             el("td", null, formatDate(run.completionDate))
                         );
