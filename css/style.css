@@ -349,6 +349,12 @@ img.gameLogo {
     gap: 14px;
 }
 
+#gamePage {
+    background-color: rgba(3, 19, 41, 0.8);
+    padding: 3rem;
+    border-radius: 0.5rem;
+}
+
 .gamePageLogo {
     width: 100%;
     border-radius: 10px;
