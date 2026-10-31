@@ -1,9 +1,215 @@
 [
   {
     "idGame": 1,
-    "name": "Celeste",
-    "releaseDate": "2018-01-25",
-    "logo": "logos/celeste.png",
-    "downloadLink": "https://example.com/download/celeste"
+    "name": "SM64 Galactic Adventure",
+    "releaseDate": "none",
+    "logo": "../images/logoSM64GA.png",
+    "downloadLink": "https://drive.google.com/drive/folders/1YhvevqwK9ae2xb2YazcYk-HMhJLZ5C6s?usp=sharing",
+    "stars": 82,
+    "tags": [
+      "Casual",
+      "Major Hack",
+      "Galaxy",
+      "Demo"
+    ]
+  },
+  {
+    "idGame": 2,
+    "name": "PKT's Openworld Quest",
+    "releaseDate": "2024-06-30",
+    "logo": "../images/logoPKT.png",
+    "downloadLink": "https://api.romhacking.com/game/pkt-s-openworld-quest/PKT_Openworld_Quest%20v1.0.bps",
+    "stars": 15,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "Open World"
+    ],
+    "description": "My first attempt at making an openworld, enjoy !\n\nEdit : This hack wouldn't have been possible without the help of ShiN3, May she rest in peace."
+  },
+  {
+    "idGame": 3,
+    "name": "Super Joan bros 64",
+    "releaseDate": "2022-01-17",
+    "logo": "../images/logoSJB64.png",
+    "downloadLink": "https://api.romhacking.com/game/Super-Joan-Bros-64/Super%20Joan%20bros%2064%201.2.bps",
+    "stars": 40,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "Joan bros",
+      "First Hack"
+    ],
+    "description": "A classic styled first hack from Joan Bros.\n\nWhy are you still playing this\nPlay JOAN BROS 3 instead"
+  },
+  {
+    "idGame": 4,
+    "name": "Super Joan bros 64 2",
+    "releaseDate": "2022-10-01",
+    "logo": "../images/logoSJB642.png",
+    "stars": 30,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "Sequel",
+      "Joan bros"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/Super-Joan-Bros-64-2/Super%20Joan%20Bros%2064%202.bps",
+    "description": "a new joan bros hack with 30star enjoy !"
+  },
+  {
+    "idGame": 5,
+    "name": "Super Joan bros 64 3",
+    "releaseDate": "2023-12-19",
+    "logo": "../images/logoSJB643.png",
+    "stars": 130,
+    "tags": [
+      "Casual",
+      "Collab",
+      "Joan bros",
+      "Major Hack",
+      "Sequel"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/super-joan-bros-64-3/Super%20Joan%20bros%2064%203%20v1.2%20frfr.zip",
+    "description": "THE COLLAB HACK OF THE YEAR TRY IT NOW"
+  },
+  {
+    "idGame": 6,
+    "name": "Super LunarJump 64",
+    "releaseDate": "2024-02-06",
+    "logo": "../images/logoSLJ64.png",
+    "stars": 30,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "LunarJump"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/super-lunarjump-64/Super%20LunarJump%2064%201.0.bps",
+    "description": "Hack made for LunarJump and his community, enjoy !"
+  },
+  {
+    "idGame": 7,
+    "name": "Please Don't Choke",
+    "releaseDate": "2025-03-02",
+    "logo": "../images/logoPDC.png",
+    "stars": 1,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "Comp",
+      "Troll"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/please-don-t-choke/katze%20choke%20and%20die%20v1.01.bps",
+    "description": "Mini \"troll\" hack for katze's choke comp, please read signs and don't put savestates except if you die where you're not supposed to"
+  },
+  {
+    "idGame": 8,
+    "name": "SM64 Darker Side",
+    "releaseDate": "2022-06-01",
+    "logo": "../images/logoSM64DS.png",
+    "stars": 80,
+    "tags": [
+      "Casual",
+      "Major Hack",
+      "Dark",
+      "Classic Styled"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/SM64-Darker-Side/SM64%20Darker%20Side%201.0.4.bps",
+    "description": "New hack from me and Leonitz, like it OK"
+  },
+  {
+    "idGame": 9,
+    "name": "SM64 Darker Side Definitive Edition",
+    "releaseDate": "2022-08-01",
+    "logo": "../images/logoSM64DSDE.png",
+    "stars": 120,
+    "tags": [
+      "Casual",
+      "Major Hack",
+      "Definitive Edition",
+      "Improvement",
+      "Dark"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/SM64-Darker-Side-Definitive-Edition/SM64%20Darker%20Side%20definitive%20edition%20fix%20lag%26crash.bps",
+    "description": "The definitive edition of darker side who fix many of his probleme (parallel cam no vanilla dialogs...) enjoy !\n\nSpecial thanks to crash and kingtoad for the dialogs :)"
+  },
+  {
+    "idGame": 10,
+    "name": "Super Joan bros 64 Redone",
+    "releaseDate": "2023-03-07",
+    "logo": "../images/logoSJB64R.png",
+    "stars": 40,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "Joan bros",
+      "Redone",
+      "Improved"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/Super-Joan-Bros-64-Redone/Super_Joan_bros_64_redone_1.1.bps",
+    "description": "A redone version of Super Joan Bros 64."
+  },
+  {
+    "idGame": 11,
+    "name": "Super Joan bros 64 2 Redone",
+    "releaseDate": "2024-01-20",
+    "logo": "../images/logoSJB642R.png",
+    "stars": 35,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "Sequel",
+      "Joan bros",
+      "Redone",
+      "Improved"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/super-joan-bros-64-2-redone/Super%20Joan%20Bros%2064%202%20Redone%20v1.1.zip",
+    "description": "the redone version of joan bros 2 is here !"
+  },
+  {
+    "idGame": 12,
+    "name": "SM64 Darker Side (DE) Green Stars",
+    "releaseDate": "2022-12-30",
+    "logo": "../images/logoSM64DSDEGS.png",
+    "stars": 120,
+    "tags": [
+      "Casual",
+      "Major Hack",
+      "Green Comet",
+      "Dark"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/SM64-Darker-Side--DE--Green-Stars/SM64_Darker_Side_Definitive_Edition_Green_Stars.bps",
+    "description": "The green star version of SM64 Darker Side Definitive Edition is here! Find them all!"
+  },
+  {
+    "idGame": 13,
+    "name": "Katze Escape from his Job 64",
+    "releaseDate": "2024-02-28",
+    "logo": "../images/logoKEFHJ64.png",
+    "stars": 6,
+    "tags": [
+      "Casual",
+      "Mini Hack",
+      "Katze",
+      "Work"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/katze-escape-from-his-job-64/Katze%20Escape%20From%20His%20Work%2064%201.0.1.bps",
+    "description": "after being stuck in the toilet, katze decided to escape from his job because he doesn't like it. \n\nMini hack 5/10min long but enjoyable still."
+  },
+  {
+    "idGame": 14,
+    "name": "Super Joan Bros 64 1.5 - Ozsef's Kaizo Adventure",
+    "releaseDate": "2024-10-09",
+    "logo": "../images/logoSJB641.5.png",
+    "stars": 46,
+    "tags": [
+      "Kaizo",
+      "Medium Hack",
+      "Light Kaizo",
+      "Joan bros",
+      "Sequel"
+    ],
+    "downloadLink": "https://api.romhacking.com/game/super-joan-bros-64-1.5---ozsef-s-kaizo-adventure/Super_Joan_bros_64_1.5_-_Ozsef_Kaizo_Adventure_1.01_Light_B3.bps",
+    "description": "My first attempt at making a kaizo hack, put A LOT of work in it and asked a lot of known kaizo hack player to beta test the hack, might be my biggest project yet, have fun !\n\nImportant Warning : OGRE or Jabo are the only plugin that worked perfectly for me so you might take one of them to play this hack."
   }
 ]

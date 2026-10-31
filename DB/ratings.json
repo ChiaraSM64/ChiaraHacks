@@ -1,5 +1,212 @@
 [
-  { "idRating": 1, "value": 5, "idRunner": 1, "idGame": 1 },
-  { "idRating": 2, "value": 4, "idRunner": 2, "idGame": 1 },
-  { "idRating": 3, "value": 3, "idRunner": 3, "idGame": 1 }
+  {
+    "idRating": 1,
+    "value": 9,
+    "idRunner": 1,
+    "idGame": 1
+  },
+  {
+    "idRating": 2,
+    "value": 10,
+    "idRunner": 2,
+    "idGame": 1
+  },
+  {
+    "idRating": 4,
+    "value": 10,
+    "idRunner": 4,
+    "idGame": 2,
+    "comment": "super sympa a jouer, on sent que chiara avait fait de gros progrès"
+  },
+  {
+    "idRating": 5,
+    "value": 8,
+    "idRunner": 2,
+    "idGame": 3
+  },
+  {
+    "idRating": 6,
+    "value": 9,
+    "idRunner": 2,
+    "idGame": 5
+  },
+  {
+    "idRating": 7,
+    "value": 5,
+    "idRunner": 4,
+    "idGame": 3,
+    "comment": "j’avais bien aimé quand j’y ai joue la 1ere fois, mais avec du recul, ce n'était que le 1er hack et il y avait encore bcp de défauts (tel que la caméra, les textures, etc...)"
+  },
+  {
+    "idRating": 8,
+    "value": 3,
+    "idRunner": 4,
+    "idGame": 4,
+    "comment": "je sais pas pk, mais j’avais pas du tout aimé"
+  },
+  {
+    "idRating": 9,
+    "value": 9,
+    "idRunner": 4,
+    "idGame": 5,
+    "comment": "pas 10 car b3 est pas assez facile Kappa (sérieusement, une collab de fou, des niveaux superbes, un vrai banger)"
+  },
+  {
+    "idRating": 10,
+    "value": 8,
+    "idRunner": 5,
+    "idGame": 5
+  },
+  {
+    "idRating": 11,
+    "value": 5,
+    "idRunner": 6,
+    "idGame": 3,
+    "comment": "Joan"
+  },
+  {
+    "idRating": 12,
+    "value": 8,
+    "idRunner": 6,
+    "idGame": 5,
+    "comment": "Joan³"
+  },
+  {
+    "idRating": 13,
+    "value": 9,
+    "idRunner": 6,
+    "idGame": 1
+  },
+  {
+    "idRating": 14,
+    "value": 7,
+    "idRunner": 4,
+    "idGame": 6,
+    "comment": "wr man en 30 star Keepo"
+  },
+  {
+    "idRating": 15,
+    "value": 6,
+    "idRunner": 6,
+    "idGame": 7
+  },
+  {
+    "idRating": 16,
+    "value": 6,
+    "idRunner": 4,
+    "idGame": 8,
+    "comment": "c’etait pas mal à sa sortie, et un peu après aussi"
+  },
+  {
+    "idRating": 17,
+    "value": 8,
+    "idRunner": 4,
+    "idGame": 9,
+    "comment": "des soucis corrigés, de nouveaux niveaux ainsi que la lakitu cam ajoutés, vraiment cool celui là"
+  },
+  {
+    "idRating": 18,
+    "value": 7,
+    "idRunner": 4,
+    "idGame": 10,
+    "comment": "un hack vraiment pas mal et vraiment cool a jouer (et aussi speedrun)"
+  },
+  {
+    "idRating": 19,
+    "value": 6,
+    "idRunner": 4,
+    "idGame": 11,
+    "comment": "celui ci etait plus cool, avec notamment un meilleur c1 et un meilleur niveau de la lave"
+  },
+  {
+    "idRating": 20,
+    "value": 5,
+    "idRunner": 4,
+    "idGame": 12,
+    "comment": "mouais"
+  },
+  {
+    "idRating": 21,
+    "value": 6,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 3
+  },
+  {
+    "idRating": 22,
+    "value": 8,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 10
+  },
+  {
+    "idRating": 23,
+    "value": 6,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 11
+  },
+  {
+    "idRating": 24,
+    "value": 10,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 5
+  },
+  {
+    "idRating": 25,
+    "value": 6,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 8
+  },
+  {
+    "idRating": 26,
+    "value": 7,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 9
+  },
+  {
+    "idRating": 27,
+    "value": 7,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 12
+  },
+  {
+    "idRating": 28,
+    "value": 8,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 6
+  },
+  {
+    "idRating": 29,
+    "value": 6,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 13
+  },
+  {
+    "idRating": 30,
+    "value": 9,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 2
+  },
+  {
+    "idRating": 31,
+    "value": 6,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 7
+  },
+  {
+    "idRating": 32,
+    "value": 10,
+    "comment": "",
+    "idRunner": 7,
+    "idGame": 1
+  }
 ]

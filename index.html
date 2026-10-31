@@ -8,20 +8,38 @@
     </head>
     <body>
         <header>
-
+            <h1>Chiara's Romhacks Sanctuary</h1>
         </header>
         <main>
             <div class="game-list" id="gameList"></div>
         </main>
 
         <script>
-            // Note maximale possible
             const MAX_RATING = 10;
+
+            // Real location of your JSON files (adjust if needed)
+            const GAMES_PATH = "DB/games.json";
+            const RATINGS_PATH = "DB/ratings.json";
 
             async function loadJson(path) {
                 const response = await fetch(path);
-                if (!response.ok) throw new Error(`Impossible de charger ${path}`);
+                if (!response.ok) throw new Error(`Unable to load ${path}`);
                 return response.json();
+            }
+
+            // Resolves a path from the JSON (e.g. "../images/logo.webp")
+            // relative to the location of games.json
+            function resolveFromJson(path) {
+                const jsonUrl = new URL(GAMES_PATH, window.location.href);
+                return new URL(path, jsonUrl).href;
+            }
+
+            // kaizo = red, casual = green, others = grey
+            function tagClass(tag) {
+                const name = tag.toLowerCase();
+                if (name === "kaizo") return "tag-kaizo";
+                if (name === "casual") return "tag-casual";
+                return "tag-default";
             }
 
             async function init() {
@@ -29,17 +47,17 @@
 
                 try {
                     const [games, ratings] = await Promise.all([
-                        loadJson("DB/games.json"),
-                        loadJson("DB/ratings.json"),
+                        loadJson(GAMES_PATH),
+                        loadJson(RATINGS_PATH),
                     ]);
 
-                    // Regroupe les notes par idGame
+                    // Groups ratings by idGame
                     const ratingsByGame = {};
                     for (const r of ratings) {
                         (ratingsByGame[r.idGame] ??= []).push(r.value);
                     }
 
-                    // Calcule la moyenne de chaque jeu (null si aucune note)
+                    // Adds the average to each game (null if no ratings)
                     const gamesWithRating = games.map((game) => {
                         const values = ratingsByGame[game.idGame] ?? [];
                         const average = values.length
@@ -48,32 +66,50 @@
                         return { ...game, averageRating: average };
                     });
 
-                    // Tri par défaut : note la plus haute -> la plus basse
+                    // Default sort: highest rating -> lowest rating
                     gamesWithRating.sort(
                         (a, b) => (b.averageRating ?? -1) - (a.averageRating ?? -1)
                     );
 
-                    // Affichage
+                    // One card per game
                     for (const game of gamesWithRating) {
                         const link = document.createElement("a");
-                        link.href = `gameInfos.html?id=${game.idGame}`;
+                        link.href = `html/gameInfos.html?id=${game.idGame}`;
                         link.className = "game";
+
+                        if (game.logo) {
+                            const img = document.createElement("img");
+                            img.className = "gameLogo";
+                            img.src = resolveFromJson(game.logo);
+                            img.alt = `${game.name} logo`;
+                            link.append(img);
+                        }
 
                         const title = document.createElement("div");
                         title.className = "gameTitle";
                         title.textContent = game.name;
+                        link.append(title);
+
+                        // Number of stars to collect (only shown if there are any)
+                        const starCount = Number(game.stars);
+                        if (Number.isFinite(starCount) && starCount > 0) {
+                            const stars = document.createElement("div");
+                            stars.className = "gameStars";
+                            stars.textContent = `${starCount} ★`;
+                            link.append(stars);
+                        }
 
                         const rating = document.createElement("div");
                         rating.className = "gameRating";
                         rating.textContent = game.averageRating !== null
                             ? `${game.averageRating.toFixed(2)}/${MAX_RATING}`
                             : "No ratings";
+                        link.append(rating);
 
-                        link.append(title, rating);
                         list.append(link);
                     }
                 } catch (error) {
-                    list.textContent = "Erreur de chargement des jeux.";
+                    list.textContent = "Error loading the games.";
                     console.error(error);
                 }
             }

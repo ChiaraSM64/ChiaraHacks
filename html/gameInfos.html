@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game</title>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <main>
+            <a class="backLink" href="../index.html">← Back to lobby</a>
+            <div class="gameLayout" id="gamePage">Loading...</div>
+        </main>
+
+        <script>
+            const MAX_RATING = 10;
+
+            // Real location of your JSON files (adjust if needed)
+            const PATHS = {
+                games: "../DB/games.json",
+                ratings: "../DB/ratings.json",
+                runs: "../DB/runs.json",
+                runners: "../DB/runners.json",
+            };
+
+            async function loadJson(path) {
+                const response = await fetch(path);
+                if (!response.ok) throw new Error(`Unable to load ${path}`);
+                return response.json();
+            }
+
+            // Resolves a path written in a JSON file (e.g. "../images/logo.webp")
+            // relative to the location of that JSON file
+            function resolveFrom(jsonPath, path) {
+                const jsonUrl = new URL(jsonPath, window.location.href);
+                return new URL(path, jsonUrl).href;
+            }
+
+            // "hh:mm:ss.ms" -> "1h 09m 05s" / "15m 05s" / "12m 34s 560ms"
+            // Minutes are padded when there are hours, seconds when there are minutes or hours
+            function formatTime(time) {
+                const [hms, msStr = "0"] = time.split(".");
+                const [h, m, s] = hms.split(":").map(Number);
+                const ms = Number(msStr.padEnd(3, "0"));
+                const pad = (n) => String(n).padStart(2, "0");
+                const parts = [];
+                if (h) parts.push(`${h}h`);
+                if (h || m) parts.push(`${h ? pad(m) : m}m`);
+                parts.push(`${h || m ? pad(s) : s}s`);
+                if (ms) parts.push(`${ms}ms`);
+                return parts.join(" ");
+            }
+
+            // "hh:mm:ss.ms" -> milliseconds (for sorting)
+            function timeToMs(time) {
+                const [hms, msStr = "0"] = time.split(".");
+                const [h, m, s] = hms.split(":").map(Number);
+                return ((h * 60 + m) * 60 + s) * 1000 + Number(msStr.padEnd(3, "0"));
+            }
+
+            // Readable date, or "—" if the value is not a real date (e.g. "none")
+            function formatDate(dateStr) {
+                if (!dateStr) return "—";
+                const date = new Date(dateStr);
+                return Number.isNaN(date.getTime())
+                    ? "—"
+                    : date.toLocaleDateString("en-GB", { timeZone: "UTC" });
+            }
+
+            // kaizo = red, casual = green, others = grey
+            function tagClass(tag) {
+                const name = tag.toLowerCase();
+                if (name === "kaizo") return "tag-kaizo";
+                if (name === "casual") return "tag-casual";
+                return "tag-default";
+            }
+
+            // Shortcut to create an element
+            function el(tag, className, text) {
+                const element = document.createElement(tag);
+                if (className) element.className = className;
+                if (text !== undefined) element.textContent = text;
+                return element;
+            }
+
+            // Only allows http(s) links
+            function safeUrl(url) {
+                try {
+                    const parsed = new URL(url);
+                    return ["http:", "https:"].includes(parsed.protocol) ? parsed.href : null;
+                } catch {
+                    return null;
+                }
+            }
+
+            // A "label / value" row of the side box
+            function infoRow(label, value) {
+                const row = el("div", "infoRow");
+                row.append(el("div", "infoLabel", label));
+                const valueEl = el("div", "infoValue");
+                if (value instanceof Node) valueEl.append(value);
+                else valueEl.textContent = value;
+                row.append(valueEl);
+                return row;
+            }
+
+            // Badge with the runner's initial (fallback when there is no picture)
+            function initialAvatar(name) {
+                return el("div", "commentAvatar", name.charAt(0).toUpperCase() || "?");
+            }
+
+            // Runner's profile picture, or initial badge
+            function buildAvatar(runner, name) {
+                const path = (runner?.avatar ?? "").trim();
+                if (!path) return initialAvatar(name);
+
+                const img = el("img", "commentAvatar");
+                img.src = resolveFrom(PATHS.runners, path);
+                img.alt = `${name}'s picture`;
+                img.style.objectFit = "cover";
+                // Image not found: fall back to the initial
+                img.addEventListener("error", () => img.replaceWith(initialAvatar(name)));
+                return img;
+            }
+
+            // ----- "Reviews" section -----
+            // Receives only the ratings that have a comment
+            function buildReviews(reviews, runnersById) {
+                const section = el("section", "panel");
+                section.append(el("h2", null, "Reviews"));
+
+                if (reviews.length === 0) {
+                    section.append(el("p", "empty", "No reviews for this game."));
+                    return section;
+                }
+
+                for (const rating of reviews) {
+                    const runner = runnersById[rating.idRunner];
+                    const author = runner?.username ?? "Unknown";
+
+                    const comment = el("div", "comment");
+                    comment.append(buildAvatar(runner, author));
+
+                    const body = el("div", "commentBody");
+                    const head = el("div", "commentHead");
+                    head.append(
+                        el("span", "commentAuthor", author),
+                        el("span", "commentRating", `${rating.value}/${MAX_RATING}`)
+                    );
+                    body.append(head);
+                    body.append(el("p", "commentText", rating.comment.trim()));
+
+                    comment.append(body);
+                    section.append(comment);
+                }
+                return section;
+            }
+
+            // ----- "Speedrun leaderboard" section -----
+            function buildRanking(gameRuns, runnersById) {
+                const section = el("section", "panel");
+                section.append(el("h2", null, "Speedrun leaderboard"));
+
+                if (gameRuns.length === 0) {
+                    section.append(el("p", "empty", "No runs for this game."));
+                    return section;
+                }
+
+                // Groups runs by category (order of appearance)
+                const byCategory = new Map();
+                for (const run of gameRuns) {
+                    if (!byCategory.has(run.category)) byCategory.set(run.category, []);
+                    byCategory.get(run.category).push(run);
+                }
+
+                for (const [category, runs] of byCategory) {
+                    // Shortest time = 1st
+                    runs.sort((a, b) => timeToMs(a.time) - timeToMs(b.time));
+
+                    section.append(el("h3", null, category));
+
+                    const wrap = el("div", "table-wrap");
+                    const table = el("table", "rankingTable");
+
+                    const headRow = el("tr");
+                    for (const title of ["#", "Runner", "Time", "Date"]) {
+                        headRow.append(el("th", null, title));
+                    }
+                    const thead = el("thead");
+                    thead.append(headRow);
+                    table.append(thead);
+
+                    const tbody = el("tbody");
+                    runs.forEach((run, index) => {
+                        const tr = el("tr");
+                        tr.append(
+                            el("td", null, String(index + 1)),
+                            el("td", null, runnersById[run.idRunner]?.username ?? "Unknown"),
+                            el("td", null, formatTime(run.time)),
+                            el("td", null, formatDate(run.completionDate))
+                        );
+                        tbody.append(tr);
+                    });
+                    table.append(tbody);
+
+                    wrap.append(table);
+                    section.append(wrap);
+                }
+                return section;
+            }
+
+            // ----- Full page -----
+            async function init() {
+                const page = document.getElementById("gamePage");
+                const id = Number(new URLSearchParams(window.location.search).get("id"));
+
+                try {
+                    const [games, ratings, runs, runners] = await Promise.all([
+                        loadJson(PATHS.games),
+                        loadJson(PATHS.ratings),
+                        loadJson(PATHS.runs),
+                        loadJson(PATHS.runners),
+                    ]);
+
+                    const game = games.find((g) => g.idGame === id);
+                    if (!game) {
+                        page.textContent = "Game not found.";
+                        return;
+                    }
+
+                    document.title = game.name;
+
+                    // idRunner -> full runner object (username + picture)
+                    const runnersById = {};
+                    for (const runner of runners) runnersById[runner.idRunner] = runner;
+
+                    // All ratings of the game (used for the average)
+                    const gameRatings = ratings.filter((r) => r.idGame === game.idGame);
+                    // Only those with a comment (shown in "Reviews")
+                    const reviews = gameRatings.filter((r) => (r.comment ?? "").trim() !== "");
+                    const gameRuns = runs.filter((r) => r.idGame === game.idGame);
+
+                    // Average of all ratings, with or without a comment
+                    const average = gameRatings.length
+                        ? gameRatings.reduce((sum, r) => sum + r.value, 0) / gameRatings.length
+                        : null;
+
+                    const starCount = Number(game.stars);
+                    const hasStars = Number.isFinite(starCount) && starCount > 0;
+
+                    // ===== Main column =====
+                    const mainCol = el("div", "gameMain");
+
+                    mainCol.append(el("h1", "gamePageTitle", game.name));
+
+                    // Tags
+                    const tagsRow = el("div", "tagsRow");
+                    const tags = el("div", "tags");
+                    for (const tag of game.tags ?? []) {
+                        tags.append(el("span", `tag ${tagClass(tag)}`, tag));
+                    }
+                    if (!(game.tags ?? []).length) tags.append(el("span", "empty", "No tags"));
+                    tagsRow.append(tags);
+                    mainCol.append(tagsRow);
+
+                    // Description
+                    const description = (game.description ?? "").trim();
+                    mainCol.append(el("div", "descriptionBox", description || "No description."));
+
+                    // Stars
+                    if (hasStars) {
+                        const starsLine = el("div", "starsLine");
+                        starsLine.append(el("span", "gameStars", `${starCount} ★`), " stars");
+                        mainCol.append(starsLine);
+                    }
+
+                    // Download link
+                    const download = safeUrl(game.downloadLink ?? "");
+                    if (download) {
+                        const link = el("a", "downloadBtn", "Download");
+                        link.href = download;
+                        link.target = "_blank";
+                        link.rel = "noopener noreferrer";
+                        mainCol.append(link);
+                    }
+
+                    // Buttons + collapsible sections
+                    const reviewsSection = buildReviews(reviews, runnersById);
+                    const rankingSection = buildRanking(gameRuns, runnersById);
+                    reviewsSection.hidden = true;
+                    rankingSection.hidden = true;
+
+                    function makeToggle(label, section) {
+                        const button = el("button", "toggleBtn", label);
+                        button.setAttribute("aria-expanded", "false");
+                        button.addEventListener("click", () => {
+                            section.hidden = !section.hidden;
+                            button.setAttribute("aria-expanded", String(!section.hidden));
+                            button.classList.toggle("active", !section.hidden);
+                        });
+                        return button;
+                    }
+
+                    const toggleRow = el("div", "toggleRow");
+                    toggleRow.append(
+                        makeToggle(`Reviews (${reviews.length})`, reviewsSection),
+                        makeToggle("Speedrun leaderboard", rankingSection)
+                    );
+
+                    mainCol.append(toggleRow, reviewsSection, rankingSection);
+
+                    // ===== Side column =====
+                    const side = el("aside", "gameSide");
+
+                    if (game.logo) {
+                        const img = el("img", "gamePageLogo");
+                        img.src = resolveFrom(PATHS.games, game.logo);
+                        img.alt = `${game.name} logo`;
+                        side.append(img);
+                    }
+
+                    const infoBox = el("div", "infoBox");
+                    infoBox.append(infoRow("Release date", formatDate(game.releaseDate)));
+
+                    const ratingValue = el("span");
+                    ratingValue.append(
+                        average !== null ? `${average.toFixed(2)}/${MAX_RATING}` : "No ratings"
+                    );
+                    if (gameRatings.length) {
+                        const label = gameRatings.length > 1 ? "ratings" : "rating";
+                        ratingValue.append(el("span", "infoSub", ` (${gameRatings.length} ${label})`));
+                    }
+                    infoBox.append(infoRow("Rating", ratingValue));
+
+                    if (hasStars) {
+                        infoBox.append(infoRow("Stars", el("span", "gameStars", `${starCount} ★`)));
+                    }
+
+                    infoBox.append(infoRow("Runs", String(gameRuns.length)));
+                    side.append(infoBox);
+
+                    page.replaceChildren(mainCol, side);
+                } catch (error) {
+                    page.textContent = "Error loading the game.";
+                    console.error(error);
+                }
+            }
+
+            init();
+        </script>
+    </body>
+</html>

@@ -1,5 +1,34 @@
 [
-  { "idRunner": 1, "username": "SpeedyAlice" },
-  { "idRunner": 2, "username": "BobTheRunner" },
-  { "idRunner": 3, "username": "CasualCharlie" }
+  {
+    "idRunner": 1,
+    "username": "ChiaraSM64",
+    "avatar": "../images/chiara pfp64.png"
+  },
+  {
+    "idRunner": 2,
+    "username": "Aryll"
+  },
+  {
+    "idRunner": 3,
+    "username": "Woissil"
+  },
+  {
+    "idRunner": 4,
+    "username": "xKiruru_",
+    "avatar": "../images/xkiruru_ pfp64.png"
+  },
+  {
+    "idRunner": 5,
+    "username": "MorningStorm"
+  },
+  {
+    "idRunner": 6,
+    "username": "ShinyyyRelaxo",
+    "avatar": "../images/shiny pfp64.png"
+  },
+  {
+    "idRunner": 7,
+    "username": "Miphasidon",
+    "avatar": ""
+  }
 ]
