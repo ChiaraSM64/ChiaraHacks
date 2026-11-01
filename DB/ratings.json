@@ -1,5 +1,11 @@
 [
   {
+    "idRating": 1,
+    "value": 9,
+    "idRunner": 1,
+    "idGame": 1
+  },
+  {
     "idRating": 2,
     "value": 10,
     "idRunner": 2,
@@ -216,5 +222,264 @@
     "comment": "",
     "idRunner": 8,
     "idGame": 5
+  },
+  {
+    "idRating": 35,
+    "value": 4,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 3
+  },
+  {
+    "idRating": 36,
+    "value": 5,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 8
+  },
+  {
+    "idRating": 37,
+    "value": 8,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 9
+  },
+  {
+    "idRating": 38,
+    "value": 4,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 4
+  },
+  {
+    "idRating": 39,
+    "value": 5,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 12
+  },
+  {
+    "idRating": 40,
+    "value": 8,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 10
+  },
+  {
+    "idRating": 41,
+    "value": 7,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 5
+  },
+  {
+    "idRating": 42,
+    "value": 9,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 11
+  },
+  {
+    "idRating": 43,
+    "value": 7,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 6
+  },
+  {
+    "idRating": 44,
+    "value": 6,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 13
+  },
+  {
+    "idRating": 45,
+    "value": 8,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 1
+  },
+  {
+    "idRating": 46,
+    "value": 9,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 2
+  },
+  {
+    "idRating": 47,
+    "value": 7,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 14
+  },
+  {
+    "idRating": 48,
+    "value": 4,
+    "comment": "",
+    "idRunner": 9,
+    "idGame": 7
+  },
+  {
+    "idRating": 49,
+    "value": 4,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 3
+  },
+  {
+    "idRating": 50,
+    "value": 6,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 10
+  },
+  {
+    "idRating": 51,
+    "value": 8,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 14
+  },
+  {
+    "idRating": 52,
+    "value": 4,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 4
+  },
+  {
+    "idRating": 53,
+    "value": 5,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 11
+  },
+  {
+    "idRating": 54,
+    "value": 7,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 5
+  },
+  {
+    "idRating": 55,
+    "value": 4,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 8
+  },
+  {
+    "idRating": 56,
+    "value": 6,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 9
+  },
+  {
+    "idRating": 57,
+    "value": 5,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 12
+  },
+  {
+    "idRating": 58,
+    "value": 6,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 6
+  },
+  {
+    "idRating": 59,
+    "value": 8,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 13
+  },
+  {
+    "idRating": 60,
+    "value": 9,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 2
+  },
+  {
+    "idRating": 61,
+    "value": 5,
+    "comment": "",
+    "idRunner": 10,
+    "idGame": 7
+  },
+  {
+    "idRating": 62,
+    "value": 5,
+    "comment": "",
+    "idRunner": 11,
+    "idGame": 3
+  },
+  {
+    "idRating": 63,
+    "value": 9,
+    "comment": "",
+    "idRunner": 11,
+    "idGame": 10
+  },
+  {
+    "idRating": 64,
+    "value": 10,
+    "comment": "I was also a tester of that Hack and playing through all of that was really fun",
+    "idRunner": 11,
+    "idGame": 14
+  },
+  {
+    "idRating": 65,
+    "value": 7,
+    "comment": "",
+    "idRunner": 11,
+    "idGame": 4
+  },
+  {
+    "idRating": 66,
+    "value": 9,
+    "comment": "",
+    "idRunner": 11,
+    "idGame": 11
+  },
+  {
+    "idRating": 67,
+    "value": 10,
+    "comment": "Probably one of my Favorite casual hacks of all time, i just love the oldschool artstyle",
+    "idRunner": 11,
+    "idGame": 5
+  },
+  {
+    "idRating": 68,
+    "value": 8,
+    "comment": "",
+    "idRunner": 11,
+    "idGame": 6
+  },
+  {
+    "idRating": 69,
+    "value": 8,
+    "comment": "",
+    "idRunner": 11,
+    "idGame": 13
+  },
+  {
+    "idRating": 70,
+    "value": 9,
+    "comment": "I choked :c",
+    "idRunner": 11,
+    "idGame": 7
+  },
+  {
+    "idRating": 71,
+    "value": 10,
+    "comment": "I want the Hack to be out NOW GRRRR",
+    "idRunner": 11,
+    "idGame": 1
   }
 ]
