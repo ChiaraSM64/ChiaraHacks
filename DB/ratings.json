@@ -481,5 +481,82 @@
     "comment": "I want the Hack to be out NOW GRRRR",
     "idRunner": 11,
     "idGame": 1
+  },
+  {
+    "idRating": 72,
+    "value": 6,
+    "comment": "JOAN BROS / Even though I ran it, I don't think it's THAT good, it's just a funny hack to run",
+    "idRunner": 12,
+    "idGame": 3
+  },
+  {
+    "idRating": 73,
+    "value": 8,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 10
+  },
+  {
+    "idRating": 74,
+    "value": 9,
+    "comment": "Basically the definition of what people should do when doing kaizo, making the level then the jumps / Really cool hack to train precision stars at a light kaizo level",
+    "idRunner": 12,
+    "idGame": 14
+  },
+  {
+    "idRating": 75,
+    "value": 6,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 4
+  },
+  {
+    "idRating": 76,
+    "value": 7,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 11
+  },
+  {
+    "idRating": 77,
+    "value": 9,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 5
+  },
+  {
+    "idRating": 78,
+    "value": 6,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 8
+  },
+  {
+    "idRating": 79,
+    "value": 8,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 9
+  },
+  {
+    "idRating": 80,
+    "value": 5,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 12
+  },
+  {
+    "idRating": 81,
+    "value": 9,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 2
+  },
+  {
+    "idRating": 82,
+    "value": 8,
+    "comment": "",
+    "idRunner": 12,
+    "idGame": 7
   }
 ]
