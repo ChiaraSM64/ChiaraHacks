@@ -620,6 +620,15 @@ td {
     font-size: 1.1rem;
 }
 
+.playerColor.redslim777 {
+    background: linear-gradient(to right, #FFB3F3, #F0C03E, #FFB3F3);
+    font-weight: bolder;
+    background-clip: text;
+    background-size: 200%;
+    color: transparent;
+    font-size: 1.1rem;
+}
+
 .playerColor.default {
     font-weight: bolder;
     background-clip: text;
